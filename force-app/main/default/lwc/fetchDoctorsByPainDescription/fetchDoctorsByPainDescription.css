@@ -1,0 +1,314 @@
+
+
+ .parentCard{
+     background: rgb(173, 216, 230);
+     width: 100%;
+     overflow: hidden;
+   
+     
+    
+}
+.image{
+  
+    width: 100px;
+    height: 100px;
+    position:absolute;top:4rem;left:2rem;
+    display:flex;
+    float: left;
+}
+.name{
+    margin-left: 10rem;
+    margin-bottom: 1rem;
+}
+.parent{
+    width:60%;
+    position:relative;top:1rem;left:15rem;border:1px;
+    overflow: hidden;
+    
+    
+}
+.doctor-name{
+     text-align:justify; 
+    font-size: 1.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+    position:initial;top:1rem;left:10rem;border:1px;
+} 
+.card{
+    background-color: transparent;
+} 
+
+.space{
+    
+    position:relative;left:10rem;bottom: 2rem;
+    padding-bottom: 0%;
+    
+   
+}
+.button{    
+      position:relative;bottom:3rem;left:30rem;
+      
+} 
+
+
+ .header{
+    font-size:30px;
+    padding-top: 2%;
+    font-weight: bold; 
+    
+}
+.available{
+    font-size:15px;
+    font-weight: bold;
+    position:absolute;top:5rem;left:7rem;border:2px;
+} 
+.container{
+   
+        display:contents;
+   
+   }
+   .colorIcon {
+    --sds-c-icon-color-foreground-default:azure; 
+}
+.custom-modal-size {
+    margin-top: 5%;
+    width: 80%; 
+    max-width: 80%;  
+    height: 100%;  
+}
+
+/* @media (max-width: 768px) {
+    .parentCard{
+        background: rgb(173, 216, 230);
+        width: 100%;
+        
+       
+   }
+   .image{
+     
+       width: 100px;
+       height: 150px;
+       position:relative;top:1rem;left:1rem;border:1px;
+   }
+   .parent{
+       width:5%;
+       position:relative;top:1rem;left:15rem;border:1px;
+       
+   }
+   .doctor-name{
+        text-align:justify; 
+       font-size: 1.5rem;
+       font-weight: bold;
+       white-space: nowrap;
+       position:absolute;top:1rem;left:10rem;border:1px;
+   } 
+   .card{
+       background-color: transparent;
+   } 
+    .details { 
+       /* font-size:medium; */
+       /* margin-left: 7rem; */
+       /* border-bottom: 2rem; */
+        
+        /* width: 50%;
+        position:relative;
+        */
+   
+    /* }
+   .space{
+       white-space: nowrap;
+       position:absolute;left:10rem;bottom: 12rem;border:1px;
+       
+      
+   }
+   .button{    
+         position:relative;bottom:8rem;left:30rem;border:1px;
+         
+   } 
+   
+   
+    .header{
+       font-size:30px;
+       padding-top: 2%;
+       font-weight: bold; 
+       
+   }
+   .available{
+       font-size:15px;
+       font-weight: bold;
+       position:absolute;top:7rem;left:21rem;border:2px;
+   }  */
+/* } */
+@media (max-width: 768px) {
+    .parentCard{
+        width:100%;
+        max-width: 100%;
+        background: rgb(173, 216, 230);
+        position:static;
+        justify-content: center;
+        overflow-x: hidden; 
+       
+   }
+   .image{
+     
+       width: 45px;
+       height: 45px;
+        position:absolute;
+       top: 12%;
+       left:6%;
+       
+        
+   }
+   .parent{
+     width: 100%; 
+    max-width: 100%;
+    position:static; 
+    display:block; 
+    overflow-x: hidden; 
+    align-items: center;
+    
+      
+   }
+   .doctor-name{
+       width: 100%;
+       text-align:justify;  
+       font-size: 0.8rem;
+       font-weight: bold;
+       white-space: nowrap;
+       position:initial;top:0.2rem;
+       display: ruby;
+       
+        float:left;
+       
+   } 
+  
+    .name{
+    
+        margin-left: 4.1rem;
+        margin-bottom: 0.7rem;
+    }
+   .space{
+       width: 100%;
+       white-space: nowrap; 
+       font-size:9px; 
+       position:relative;left:4.2rem;bottom: 2.7rem;
+       
+       
+   }
+   
+   
+   .button{
+    width:32%;
+    height: 1%;
+    padding: 0.5px 1px;
+    font-size: 4.5px; 
+    position:relative;left:10.5rem;bottom:3rem;
+    /* border-radius: 10px;  */
+    box-shadow: none;
+    line-height:normal;     
+   } 
+   
+   
+    .header{
+        width: 100%;
+       font-size:11px;
+       padding-top: 2%;
+       font-weight: bold; 
+       
+   }
+   .available{
+       width: 100%;
+       font-size:2px;
+       font-weight: bold;
+       position:absolute;top:1rem;left:1rem;border:1px;
+   } 
+   .container{
+    width: 100%;
+    font-size:10px;
+   
+   }
+   .mobileView{
+   
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    
+    
+   }
+   .mobileViewytext{
+    width: 100%;
+    font-size: 12px;
+}
+   .fieldset{
+    width: 100%;
+    height: 80%;
+   }
+   .colorIcon {
+    --sds-c-icon-color-foreground-default:azure; 
+}
+.spanvideoimg{
+    width:80%;
+    height:70%;
+}
+
+.spanimg{
+    width:70%;
+    height:70%;
+}
+.images{
+    width:70%;
+    height:70%;
+}
+.mobile{
+    width: 100%;
+}
+.custom-modal-size{
+    width: 100%;
+    
+}
+
+/* modal for mobile view */
+
+
+.c-container {
+    width: 100%;
+}
+.c-containers{
+    width: 100%;
+    /* display:contents;
+     flex-direction: column; */
+}
+.contentflow{
+    width: 100%;
+    display:flex;
+     flex-direction: column;
+}
+.flows{
+      width: 100%;
+      /* display:flex; 
+      flex-direction:row; */
+      
+     
+}
+lightning-flow {
+    width: 100%;
+    /* flex: 1; */
+    /* overflow-y: auto;
+    display:flex; 
+    flex-direction:row; */
+}
+.headingcolor{
+    width: 100%;
+}
+.modal{
+    width: 100%;
+}
+.footercolor{
+    width: 100%;
+}
+.table{
+    width: 100%;
+    font-size: 11px;
+} 
+}

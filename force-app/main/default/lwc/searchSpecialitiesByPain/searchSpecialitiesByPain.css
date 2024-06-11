@@ -1,0 +1,10 @@
+.input{
+    width:50%;
+    
+}
+.search{
+    position:absolute;top:3rem;left:48rem;border:2px;
+    color:blue;
+    background-color: rgba(67, 67, 244, 0.772);
+}
+

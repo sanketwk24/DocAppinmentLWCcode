@@ -1,0 +1,9 @@
+.example{
+    background-color: rgb(76, 234, 234);
+    width: 900;
+    height:500;
+    border-right: 1rem;
+    border-bottom: 1rem;
+    border-left: 1rem;
+    border-top: 1rem;
+}

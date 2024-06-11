@@ -1,0 +1,247 @@
+<template>
+         
+    
+            <!-- <lightning-card class="slds-card" style=" background-color: rgb(173, 216, 230);"> -->
+                 <div class="parentCard slds-grow-none">
+                 <div class="header slds-align_absolute-center slds-border_bottom">
+                 <p style="color:aliceblue">{speciality}</p>
+                </div>
+           
+
+
+                <div class="available slds-border_bottom">
+                    <p style="color:aliceblue">Available : {count}</p>
+                   </div>
+            
+
+                <template for:each={doctors} for:item="doctor">
+                    
+                    <div key={doctor.Id}>
+                        <div class="parent" >
+  
+                        <lightning-card>
+                            
+
+                       
+                           
+
+                        <div class="doctor-name slds-grow-none">
+                            <div class="image slds-grow-none">
+                                <img  src={doctor.Image_URL__c} alt="doctor">
+                                </div>
+                                <div class="name">
+                        <p>{doctor.Name}</p>
+                        </div>
+                    </div>
+                     
+                      
+
+                        
+                        
+                      
+
+                        <div class="button ">
+                        <lightning-button  variant="brand" label="Book An Appointment"
+                         onclick={BookAppointment} disabled={isDisabled} value={doctor.Id}>
+                        </lightning-button>   
+                        </div> 
+                        
+                       
+                   
+                         <div class="space">
+                            
+                        <p>Appointment Type: {doctor.Available_Appointment_Type__c}</p>
+                        <p class="address slds-line-clamp">Address: {doctor.Account.BillingCity},<br/>{doctor.Account.BillingState},
+                            <br/>{doctor.Account.BillingCountry},
+                                     {doctor.Account.PostalCode} </p>
+                        <p>Hospital:{doctor.Account.Name}</p>
+                        <lightning-button variant="base" label="Check Availability" onclick={handleShowPopover} value={doctor.Id}></lightning-button>
+                        
+                        
+                    
+                        
+
+                    </div>
+                       
+                  
+                            
+
+                    <div class="container slds-grow-none">
+                        <lightning-tabset variant="scoped">
+                            <lightning-tab label="overview"> {doctor.Overview__c}</lightning-tab>
+                            <lightning-tab label="Awards and Regonition"> {doctor.Awards_and_Regonitions__c}</lightning-tab>
+                            <lightning-tab label="Area of Expertise">{doctor.Area_of_Expertise__c}</lightning-tab>
+                           
+                        </lightning-tabset>
+                       
+                    </div>
+
+            
+            </lightning-card>
+           
+        <br/>
+        </div>
+                      
+    </div>
+                    
+               
+                </template>
+              
+                </div> 
+            <!-- </lightning-card> -->
+        
+           
+   
+            
+      
+        
+    
+
+    
+  
+    <template if:true={showPopUp}>
+        <div class="slds-m-around_xx-large mobileView">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button--icon-inverse slds-modal__close" onclick={hideTimeModal}>
+                            <lightning-icon icon-name="utility:close" size="medium" variant="brand" class="colorIcon"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Available_Time_slot</h2>
+                    </header>
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium mobileView">
+                        <template if:true={mydata}>
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Day of Week</th>
+                                        <th scope="col">Start Time</th>
+                                        <th scope="col">End Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={mydata} for:item="slot">
+                                        <tr key={slot.DayOfWeek}>
+                                            <td>{slot.DayOfWeek}</td>
+                                            <td>{slot.StartTime}</td>
+                                            <td>{slot.EndTime}</td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                            </template>
+                        <template if:false={mydata}>
+                            <p>No time slots available.</p>
+                        </template>
+                    </div>
+
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+
+
+
+       
+   
+       <!-- modal start -->      
+       <template if:true={isShowModal}>
+    
+               
+    
+        <div class="slds-m-around_xx-large mobileView">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal Header -->
+                    <header class="slds-modal__header   headingcolor">
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" onclick={hideModalBox} class="colorIcon slds-button slds-button--icon-inverse slds-modal__close"></lightning-icon>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate mobileViewytext ">Please Select Appointment Type</h2>
+                    </header>
+                    <!-- Modal Content -->
+                    <div class="slds-modal__content slds-p-around_medium modal mobile" id="modal-content-id-1">
+                        <div class="c-container">
+                            
+                                <fieldset class="slds-form-element ">
+                                    <legend class="slds-form-element__legend slds-form-element__label"></legend>
+                                    <div class="slds-form-element__control slds-align_absolute-center" >
+                                        <div class="slds-visual-picker slds-visual-picker_small fieldset" onclick={handleRadioClick} data-value="ZoomMeeting">
+                                            <input type="radio" id="visual-picker-93" name="example-unique-name-36" value="ZoomMeeting"/>
+                                            <label for="visual-picker-93">
+                                                <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center spanvideoimg ">
+                                                    <img src={ZoomMeetingIcon} alt="Zoom Meeting Icon" class="images"/>
+                                                </span>
+                                                <span class="slds-visual-picker__body">
+                                                    <span class="slds-text-title">Video</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="slds-visual-picker slds-visual-picker_small fieldset" onclick={handleRadioClick} data-value="DirectHospital">
+                                            <input type="radio" id="visual-picker-94" name="example-unique-name-36" value="DirectHospital"/>
+                                            <label for="visual-picker-94">
+                                                <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center spanimg">
+                                                    <img src={Healthcloudimg1} alt="Hospital Icon" class="images"/>
+                                                </span>
+                                                <span class="slds-visual-picker__body">
+                                                    <span class="slds-text-title">Visit Hospital</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            
+                        </div>
+                    </div>
+                    <!-- Modal Footer -->
+                    <footer class="slds-modal__footer footercolor">
+                         <lightning-button label="Previous" title="Previous" onclick={previousActionToFlow} class="slds-var-m-left_x-small"></lightning-button>
+                        <lightning-button label="Next" title="Next" onclick={nextActionToFlow} class="slds-var-m-left_x-small"></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+     </template>
+     <!-- modal end -->
+    
+    
+    
+     
+        <div class="slds-m-around_xx-large mobileView">
+            <template if:true={FlowPopup}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container FlowWidthSet custom-modal-size">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon-inverse slds-modal__close" onclick={hideExampleModalForFlows}>
+                                <lightning-icon icon-name="utility:close" size="medium" alternative-text="Close" class="colorIcon"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium contentflow" id="modal-content-id-3">
+                            <div class="c-containers">
+                               
+                                
+                                <lightning-flow
+                                flow-api-name='Time_Slot_Checking'
+                                flow-input-variables={inputVariables}
+                                data-id="flowComponent"
+                                class="flows">
+                               </lightning-flow>
+
+                               
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </div>
+    
+      
+    
+</template>
+
