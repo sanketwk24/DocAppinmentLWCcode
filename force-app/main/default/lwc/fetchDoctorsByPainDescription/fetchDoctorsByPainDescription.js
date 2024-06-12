@@ -65,7 +65,7 @@ export default class FetchDoctorsByPainDescription extends LightningElement {
         this.showZoompopup = true;
         //this.BookAnAppointment = event.target.value;
         
-     }
+     } 
 
     @wire(fetchDoctorsByPain)
     wiredDoctors({ data, error }) {
