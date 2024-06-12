@@ -1,7 +1,54 @@
 
     <template>
-        <div class="example">
-         <p>i'm body</p>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                <div class="slds-m-around_xx-large mobileView">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!-- modal header start -->
+                            <header class="slds-modal__header">
+                                <button class="slds-button slds-button--icon-inverse slds-modal__close" onclick={hideTimeModal}>
+                                    <lightning-icon icon-name="utility:close" size="medium" variant="brand" class="colorIcon"></lightning-icon>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+                                <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Available_Time_slot</h2>
+                            </header>
+                            <!-- modal body start -->
+                            <div class="slds-modal__content slds-p-around_medium mobileView">
+                                <template if:true={mydata}>
+                                    <table class="slds-table slds-table_bordered slds-table_cell-buffer table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Day of Week</th>
+                                                <th scope="col">Start Time</th>
+                                                <th scope="col">End Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template for:each={mydata} for:item="slot">
+                                                <tr key={slot.DayOfWeek}>
+                                                    <td>{slot.DayOfWeek}</td>
+                                                    <td>{slot.StartTime}</td>
+                                                    <td>{slot.EndTime}</td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                    </template>
+                                <template if:false={mydata}>
+                                    <p>No time slots available.</p>
+                                </template>
+                            </div>
+        
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                <!-- Content for mobile and medium screens -->
+            </div>
         </div>
+        
     
     </template>

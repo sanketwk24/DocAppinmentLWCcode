@@ -54,6 +54,9 @@ export default class FetchDoctorsByPainDescription extends LightningElement {
     @track speciality;
     @track count;
     @track isDisabled;
+    @track totalPages;
+    @track currentPage =1;
+
     
 
      connectedCallback(){
@@ -103,6 +106,25 @@ export default class FetchDoctorsByPainDescription extends LightningElement {
         }
     }
 
+    updatePaginatedDoctors() {
+        const start = (this.currentPage - 1) * this.recordsPerPage;
+        const end = start + this.recordsPerPage;
+        this.paginatedDoctors = this.doctors.slice(start, end);
+    }
+
+    handleNextPage() {
+        if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+            this.updatePaginatedDoctors();
+        }
+    }
+
+    handlePreviousPage() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            this.updatePaginatedDoctors();
+        }
+    }
     @api accId; // Public property to accept account ID
     @track showPopUp = false;
     @track timeSlots = [];
