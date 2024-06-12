@@ -9,7 +9,7 @@ public without sharing class FetchDoctors {
             if(worktypecsb != null){
                 WorkTypeCareSpecialty worktypecs = [SELECT Id,Name,WorkTypeId,CareSpecialtyId
                                                     FROM WorkTypeCareSpecialty 
-                                                    WHERE WorkTypeId =: worktypecsb.ParentId];
+                                                     WHERE WorkTypeId =: worktypecsb.ParentId];
                 system.debug(worktypecs);
                 
                 Set<Id> worktypeId = new Set<Id>();
