@@ -205,6 +205,7 @@ export default class FetchDoctorsByPainDescription extends LightningElement {
                 this.isShowModal = true; 
             }
         }
+    
         catch(error){
             this.isShowModal = false;
             const toastEvent = new ShowToastEvent({
